@@ -2,11 +2,12 @@
 	"name": "bckchn", 
 	"version": "0.0.1", 
 	"dependencies":	{ 
-		"express": "2.4.6",
 		"connect": "1.7.0",
-		"ejs": "0.4.3",
-		"redis":  "0.6.7",
 		"connect-redis": "1.0.7",
+		"ejs": "0.4.3",
+		"express": "2.4.6",
+		"now": "0.7.4",
+		"redis":  "0.6.7",
 		"step": "0.0.4"
 	}
 }
