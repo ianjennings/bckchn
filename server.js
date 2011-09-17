@@ -37,7 +37,7 @@ app.configure(function() {
 });
 
 function auth_web(req, res, next) {
-  if (req.session && req.session.auth == true) {
+  if (req.session && req.session.me) {
     return next();
   } else {
     return next(new Error('Unauthorized'));
@@ -57,11 +57,7 @@ step(
 	}
 );
 
-app.get("/", function(req, res) {
-	res.render('pages/channel', {title: 'My Site'});
-});
-
-app.get('/register', function(req, res, next) {
+app.post('/register', function(req, res, next) {
   var res = res;
   step(
     function() {
@@ -76,19 +72,15 @@ app.get('/register', function(req, res, next) {
       if(err) this(err);
       user_controller.get(key, this);	
     },
-    function(err, data) {
+    function(err, user) {
       if(err) return next(err);
 			req.session.me = user;
-			res.redirect('back');
+			res.send(req.session.me);
     }
   );
 });
 
-app.get('/me', auth_web, function(req, res){
-	res.send(req.session.me);
-});
-
-app.get('/login', function(req, res, next) {
+app.post('/login', function(req, res, next) {
 	var
 		req = req,
 		res = res;
@@ -102,10 +94,13 @@ app.get('/login', function(req, res, next) {
     function(err, user) {
       if(err) return next(err);
 			req.session.me = user;
-			res.send(user);
-			res.redirect('back');
+			res.send(req.session.me);
     }
   );
+});
+
+app.get('/me', auth_web, function(req, res){
+	res.send(req.session.me);
 });
 
 app.get('/logout', auth_web, function(req, res, next) {
@@ -116,10 +111,34 @@ app.get('/logout', auth_web, function(req, res, next) {
     },
     function(err) {
       if(err) return next(err);
-			// redirect
-      res.json(true);
+			res.redirect('back');
     }
   );
+});
+app.get('/login', function(req, res, next) {
+	if (req.session.me) {
+	  res.redirect('/');
+	} else {
+		res.render('pages/channel', 
+			{prompt: "partials/login",
+				me: false});
+	}
+});
+app.get('/register', function(req, res, next) {
+	if (req.session.me) {
+	  res.redirect('/');
+	} else {
+		res.render('pages/channel', 
+			{prompt: "partials/register",
+				me: false});
+	}
+});
+
+app.get("/", function(req, res, next) {
+	res.render('pages/channel', 
+		{	prompt: false,
+			me: req.session.me
+		});
 });
 
 app.error(function(err, req, res){
