@@ -1,3 +1,3 @@
 module.exports = {
-	redis_namspace: 'bckchn'
+	redis_namespace: 'bckchn'
 }
