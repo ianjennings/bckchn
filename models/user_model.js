@@ -38,6 +38,7 @@ var user_model = {
       email_hash = 
         crypto.createHash('md5').update(clean_mail).digest('hex'),
       password = user_model.encrypt_pass(password),
+      secret = user_model.encrypt_secret(username),
       data = {
         type: 'user',
         key: user_model.get_key(username),
@@ -66,6 +67,10 @@ var user_model = {
   
   encrypt_pass: function(password){
     return crypto.createHash('sha256').update('pass_' + password).update(config.password_salt).digest('hex');
+  },
+  
+  encrypt_secret: function(username){
+    return crypto.createHash('sha256').update('session').update(username).update(config.bckchn_secret_salt).digest('hex');
   },
   
   // username and password match

@@ -75,7 +75,7 @@ app.post('/register', function(req, res, next) {
     function(err, user) {
       if(err) return next(err);
 			req.session.me = user;
-			res.send(req.session.me);
+			res.json(req.session.me);
     }
   );
 });
@@ -94,7 +94,8 @@ app.post('/login', function(req, res, next) {
     function(err, user) {
       if(err) return next(err);
 			req.session.me = user;
-			res.send(req.session.me);
+			res.json(req.session.me);
+			console.log(req.session);
     }
   );
 });
@@ -147,3 +148,11 @@ app.error(function(err, req, res){
 
 app.listen(8080); 
 var everyone = require("now").initialize(app);
+
+function verify_auth() {
+
+}
+
+everyone.now.distributeMessage = function(message){
+  everyone.now.receiveMessage(message);
+};
