@@ -1,0 +1,171 @@
+/*
+Alaskan Midnight
+http://www.colourlovers.com/palette/442866/Alaskan_Midnight
+*/
+@bright: #B2DEDA;
+@mid1: #45B1BD;
+@mid2: #3F6398;
+@logo: #2E154A;
+@text: #0F0212;
+@gray_dark: #2b2c2e;
+@gray_light: #bcbcbe;
+
+@import "elements.less";
+
+@sidebar_width: 12em;
+
+body, html {
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+	color: @text;
+}
+#client, #sidebar {
+	position: absolute;
+	left: 0;
+	top: 0;
+	height: 100%;
+}
+#client {
+	font-family: Helvetica, Arial, sans-serif;
+	font-size: 12px;
+	line-height: 1.4em;
+	color: #2B340D;
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	left: 0;
+	top: 0;
+}
+#sidebar {
+	color: @gray_light;
+	width: @sidebar_width;
+	background-color: @gray_dark;
+	z-index: 2;
+}
+#me {
+	padding: .5em;
+	background-color: darken(@logo, 10%)
+}
+#me .avatar {
+	width: 32px;
+	height: 32px;
+	float: left;
+	margin-right: .5em;
+}
+#me .karma {
+	font-size: .9em;
+}
+#channels {
+	padding: .5em 0em .5em .5em;
+}
+#channels li a {
+	padding: .5em;
+	display: block;
+	color: @mid1;
+}
+#channels li a:hover {
+	text-decoration: none;
+}
+#channels li a.selected {
+	background-color: lighten(@bright, 18%);
+	position: relative;
+	left: 1px;
+	.border-radius(0, 0, 3px, 3px);
+	color: darken(@mid1, 40%);
+	text-decoration: none;
+	font-weight: bold;
+}
+#chat {
+	margin-left: @sidebar_width;
+	background-color: lighten(@bright, 18%);
+	.bordered(0, 0, 0, darken(@gray_dark, 40%));
+	height: 100%;
+}
+#logo {
+	color: @bright;
+	background-color: @logo;
+	text-align: center;
+	line-height: 2.5em;
+	font-size: 1.6em;
+	letter-spacing:1px;
+}
+#messages {
+	padding: .5em;
+	line-height: 1.6em;
+}
+#messages li {
+	padding: .3em .3em;
+	border-bottom: 1px solid #e3eae9;
+	float: left;
+	width: 100%;
+}
+#messages li a.user {
+	float: left;
+	text-decoration: none;
+	margin-right: .5em;
+	color: @mid2;
+	font-weight: bold;
+}
+#messages li a.user:hover {
+	text-decoration: none;
+}
+#messages li a.user .avatar {
+	float: left;
+	width: 16px;
+	height: 16px;
+	position: relative;
+	top: 2px;
+}
+#messages li .user .username {
+	float: left;
+	margin-left: .3em;
+}
+#settings {
+	width: @sidebar_width;
+	position: absolute;
+	left: 0;
+}
+#composer {
+	margin-left: @sidebar_width;
+	background-color: @bright;
+	padding: .4em;
+	.bordered(0, 0, 0, darken(@gray_dark, 40%));
+}
+#composer_message {
+	border: none;
+	padding: .5em .5em;
+	width: 100%;
+	font-size: 1em;
+	.rounded(4px);
+	.bw-gradient(#EEE, 250, 240);
+	.drop-shadow(0, 1px, 1px, 0.1);
+	.inner-shadow(0, 1px, 1px, 0.1);
+	border: 1px solid darken(@bright, 10%);
+}
+#composer_message:focus {
+	outline: none;
+	border: 1px solid darken(@bright, 30%);
+}
+#composer_submit {
+	.button();
+	width: 5em;
+	margin-left: 1.3em;
+}
+#footer {
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+	z-index: 3;
+}
+.button (@back_color: @gray_light) {
+	display: block;
+	text-align: center;
+	padding: .4em 1em;
+	color: darken(@back_color, 50%);
+	border: 1px solid darken(@back_color, 30%);
+	cursor: pointer;
+	.bw-gradient(#EEE, 230, 255);
+	.rounded(4px);
+	.drop-shadow(0, 1px, 1px, 0.1);
+}

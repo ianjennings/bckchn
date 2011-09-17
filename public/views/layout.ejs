@@ -2,8 +2,80 @@
 <html>
 	<head>
 		<title>BCKCHN.NL</title>
+		<script type="text/javascript" src="http://use.typekit.com/hto4izk.js"></script>
+		<script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+		<link rel="stylesheet/less" type="text/css" href="/static/css/reset.css">
+		<link rel="stylesheet/less" type="text/css" href="/static/css/index.less">
+		<script src="/static/js/less-1.1.3.min.js" type="text/javascript"></script>
 	</head>
 	<body>
-		<%=body%>
+		<div id="client">
+			<div id="sidebar">
+				<div id="logo" class="tk-domoyouji">
+					bckchn.nl
+				</div>
+				<div id="me">
+					<img  class="avatar" src="http://www.gravatar.com/avatar/205e460b479e2e5b48aec07710c08d50?f=y&d=retro" />
+					<span class="username">
+						jennings
+					</span>
+					<br />
+					<span class="karma">
+						<span class="value">144</span> karma
+					</span>
+				</div>
+				<ul id="channels">
+					<li>
+						<a href="#" class="selected">Global</a>
+					</li>
+					<li>
+						<a href="#">~jennings</a>
+					</li>
+				</ul>
+				<div id="settings">
+				</div>
+			</div>
+			<div id="chat">
+				<div id="featured">
+				</div>
+				<ol id="messages">
+					<li>
+						<a class="user" href="#">
+							<img class="avatar" src="http://www.gravatar.com/avatar/205e460b479e2e5b48aec07710c08d50?f=y&d=retro" />
+							<div class="username">
+								jennings
+							</div>
+							:
+						</a>
+						<div class="message">
+							Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam lacinia blandit mi a iaculis. Sed non nisl ac purus tincidunt adipiscing in sit amet libero. Fusce dapibus enim eu lorem consectetur lobortis fringilla eros tristique. Curabitur ac elit nisi. Sed ac cursus risus. Sed eu turpis ac sapien volutpat fermentum. Vivamus hendrerit justo lacus. Vestibulum eleifend euismod dictum. Vestibulum condimentum massa a mauris dapibus imperdiet. Vestibulum id aliquet ante. Praesent a enim odio.
+						</div>
+					</li>
+				</ol>
+			</div>
+			<div id="footer">
+				<div id="settings">
+					Settings
+				</div>
+				<div id="composer">
+					<form>
+						<table 
+							border="0" 
+							width="100%" 
+							cellpadding="0" 
+							cellspacing="0">
+							<tr>
+								<td>
+									<input id="composer_message" type="text" name="message" />
+								</td>
+								<td width="6.5em">
+									<input id="composer_submit" type="submit" name="submit" value="send"/>
+								</td>
+							</tr>
+						</table>
+					</form>
+				</div>
+			</div>
+		</div>
 	</body>
 </html>

@@ -26,7 +26,7 @@ app.configure(function() {
   app.use(connect.bodyParser());
   
   // static files
-  app.use('/public', connect.static(__dirname + '/public/static'));
+  app.use('/static', connect.static(__dirname + '/public/static'));
   
   // template system
   app.set('view engine', 'ejs');
@@ -51,6 +51,5 @@ app.get("/", function(req, res) {
 	res.render('pages/channel', {title: 'My Site'});
 });
 
-console.log('server started');
 app.listen(8080); 
 var everyone = require("now").initialize(app);
