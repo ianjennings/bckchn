@@ -26,8 +26,11 @@ app.configure(function() {
   // template system
   app.set('view engine', 'ejs');
   
-})
+});
 
-var app = express.createServer(); 
-app.listen(3000); 
+app.get('/', function(req, res){
+    res.send('Hello World');
+});
+
+app.listen(8080); 
 var everyone = require("now").initialize(app);
